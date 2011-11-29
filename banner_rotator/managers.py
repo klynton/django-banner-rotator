@@ -7,7 +7,6 @@ from django.db import models
 def pick(bias_list):
 
 
-    print bias_list
 
     number = "%.18f" % random()
     current = float(0)
@@ -17,13 +16,12 @@ def pick(bias_list):
         process.append(y)
 
     final = weighted(process)
-    print process
-    print final
-    print bias_list[final]
+
     for choice in bias_list[final]:
         return choice
 
 
+# got this from http://eli.thegreenplace.net/2010/01/22/weighted-random-generation-in-python/
 def weighted(weights):
     total = 0
     winner = 0
