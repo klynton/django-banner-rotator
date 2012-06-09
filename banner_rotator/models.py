@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxLengthValidator
 
 from banner_rotator.managers import BiasedManager
 
@@ -69,5 +70,5 @@ class Click(models.Model):
 
     datetime = models.DateTimeField("Clicked at",auto_now_add=True)
     ip = models.IPAddressField(null=True, blank=True)
-    user_agent = models.TextField(null=True, blank=True)
+    user_agent = models.TextField(validators=[MaxLengthValidator(1000)], null=True, blank=True)
     referrer = models.URLField(null=True, blank=True)
